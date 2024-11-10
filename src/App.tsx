@@ -1,27 +1,33 @@
-import React, {useState} from 'react';
+import React, { MouseEvent } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { NewComponent } from './components/NewComponent/NewComponent';
+import { Button } from './components/Button';
+
 
 
 function App() {
-  const [students, setStudents] = useState([
-          {id: 1, name: "James", age: 8},
-          {id: 2, name: "Robert", age: 18},
-          {id: 3, name: "John", age: 28},
-          {id: 4, name: "Michael", age: 38},
-          {id: 5, name: "William", age: 48},
-          {id: 6, name: "David", age: 58},
-          {id: 7, name: "Richard", age: 68},
-          {id: 8, name: "Joseph", age: 78},
-          {id: 9, name: "Thomas", age: 88},
-          {id: 10, name: "Charles", age: 98},
-          {id: 11, name: "Christopher", age: 100},
-      ]
-  )
+
+  const ButtonFoo1 = (subscriber: string, age: number, adress: string) => {
+    console.log(subscriber, age, adress)
+  }
+  const ButtonFoo2 = (subscriber: string) => {
+    console.log(subscriber)
+  }
+  const ButtonFoo3 = () => {
+    console.log('Im Stupid Button')
+  }
+
+
   return (
-      <NewComponent students={students}/>
-  );
+    <div className='App'>
+      {/* <button>MyYouTubeChanel-1</button>
+      <button>MyYouTubeChanel-2</button>  */}
+      <Button name={'MyYouTubeChanel-1'} callback={() => ButtonFoo1('Im Vasya', 21, 'Minsk')} />
+      <Button name={'MyYouTubeChanel-2'} callback={() => ButtonFoo2('Im Ivan')} />
+      <Button name={'StupidButton'} callback={ButtonFoo3} />
+
+    </div>
+  )
 }
 
 export default App;
