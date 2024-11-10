@@ -20,22 +20,22 @@ export const NewComponent = (props: NewComponentPropsType) => {
 
 
     return (
-<table>
-    <tr>
-        <th>manufacturer</th>
-        <th>model</th>
-    </tr>
-    
-    {topCars.map((car,index)=>{
-        return(
-        <tr key={index}>
-            <td>{car.manufacturer}</td>
-            <td>{car.model}</td>
-        </tr>
-        )
-    })}
-    
-</table>
+        <table>
+            <tr>
+                <th>manufacturer:</th>
+                <th>model:</th>
+            </tr>
+
+            {topCars.map((car, index) => {
+                return (
+                    <tr key={index}>
+                        <td>{car.manufacturer}</td>
+                        <td>{car.model}</td>
+                    </tr>
+                )
+            })}
+
+        </table>
     );
 };
 
