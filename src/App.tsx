@@ -1,22 +1,28 @@
-import React, { HtmlHTMLAttributes, MouseEvent } from 'react';
+import React, { HtmlHTMLAttributes, MouseEvent, useState } from 'react';
 import './App.css';
 import { Button } from './components/Button';
 
 
 function App() {
 
-  const Button1Foo = (name: string) => {
-    console.log(name)
-  }
+// let a =1;
+let[a,setA]=useState(1);
 
-  const Button2Foo = (name: string) => {
-    console.log(name)
-  }
+const onClickHandler = ()=>{
+  setA(++a);
+  console.log(a)
+}
+
+const onClickHandlerFromZero = ()=>{
+  setA(a=0);
+  console.log(a)
+}
 
   return (
     <>
-      <Button name ={'Ivan'} callBack={()=>Button1Foo('ivan')} />
-      <Button name ={'Vasya'} callBack={()=>Button2Foo('vasya')} />
+    <h1>{a}</h1>
+    <button onClick={onClickHandler}>number</button>
+    <button onClick={onClickHandlerFromZero}>0</button>
     </>
   );
 }
