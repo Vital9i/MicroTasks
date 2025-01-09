@@ -1,55 +1,37 @@
 import React from 'react';
+import { App,MoneyValue } from '../../App'
 
-type NewComponentsPropsType = {
-    students: Array<StudentType>
+type NewComponentProps = {
+    onClickFilterHandler:(FilterName: MoneyValue)=>void
+    currentMoney:MoneyType[]
 }
 
-type StudentType = {
-    id: number
-    name: string
-    age: number
+type MoneyType = {
+banknote:string
+nominal:number
+number:string
 }
 
-
-export const NewComponent = () => {
-    const topCars = [
-        { manufacturer: 'BMW', model: 'X5' },
-        { manufacturer: 'Mersedes', model: 'MLS' },
-        { manufacturer: 'Audi', model: 'Q7' }
-    ]
+export const NewComponent = ({onClickFilterHandler, currentMoney}:NewComponentProps) => {
     return (
-        <table>
-            <tr>
-                {topCars.map((car, index) => {
+        <>
+            <ul>
+                {currentMoney.map((objFromMoneyArr, index) => {
                     return (
-                        <th key={index}>{car.manufacturer}</th>
-                    )
+                        <li key={index}>
+                            <span>{objFromMoneyArr.banknote}</span>
+                            <span>{objFromMoneyArr.nominal}</span>
+                            <span>{objFromMoneyArr.number}</span>
+                        </li>
+                    );
                 })}
-
-            </tr>
-            <tr>
-                {topCars.map((car, index) => {
-                    return(
-                    <td key={index}>{car.model}</td>
-                )})}
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+            </ul>
+            <div>
+                <button onClick={() => onClickFilterHandler('All')}>All</button>
+                <button onClick={() => onClickFilterHandler('ruble')}>ruble</button>
+                <button onClick={() => onClickFilterHandler('dollar')}>dollar</button>
+            </div>
+        </>
     );
 };
 
-
-// <ul>
-//     {props.students.map((item) => {
-//         debugger
-//         return (
-//             <li key={item.id}>
-//                 <span>{item.name}</span>
-//                 <span> age: {item.age}</span>
-//             </li>
-//         )
-//     })}
-// </ul>
